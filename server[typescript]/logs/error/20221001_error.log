@@ -1,0 +1,36 @@
+[2022-10-01 0:59:34] Error: Please add all fields!
+    at D:\files\system development\mernstack\mern-template\server\controllers\userController.js:25:11
+    at asyncUtilWrap (D:\files\system development\mernstack\mern-template\node_modules\express-async-handler\index.js:3:20)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:175:3)
+
+[2022-10-01 10:03:52] Error: Please add all fields!
+    at D:\files\system development\mernstack\mern-template\server\controllers\userController.js:25:11
+    at asyncUtilWrap (D:\files\system development\mernstack\mern-template\node_modules\express-async-handler\index.js:3:20)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:175:3)
+
+[2022-10-01 10:07:51] Error: Please add all fields!
+    at D:\files\system development\mernstack\mern-template\server\controllers\userController.js:25:11
+    at asyncUtilWrap (D:\files\system development\mernstack\mern-template\node_modules\express-async-handler\index.js:3:20)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\layer.js:95:5)
+    at D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\files\system development\mernstack\mern-template\node_modules\express\lib\router\index.js:175:3)
+
