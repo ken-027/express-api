@@ -8,14 +8,14 @@ import { apiAuth } from '../middlewares/auth'
 
 //importing controllers
 import {
-  addUserInfoController,
-  userInfoController,
-  userListController
+	addUserInfoController,
+	userInfoController,
+	userListController
 } from '../controllers/user'
 
 const userRoutes = express.Router()
 const upload = multer({
-  dest: `./${PRODUCTION ? `server[express]` : `server[typescript]`}/storage/tmp`,
+	dest: `./${PRODUCTION ? 'server[express]' : 'server[typescript]'}/storage/tmp`,
 })
 
 //routes declaration

@@ -3,7 +3,7 @@ import { dotenv } from '@modules'
 dotenv()
 
 //env
-export const PORT: number = parseInt(process.env?.PORT! as string) || 5000
+export const PORT: number = parseInt(process.env?.PORT as string) || 5000
 export const APP_NAME: string = process.env?.APP_NAME || 'expressapp'
 export const PRODUCTION: boolean = (process.env?.NODE_ENV || 'development') === 'production'
 export const APP_KEY: string = process.env?.APP_KEY || `${APP_NAME}123`

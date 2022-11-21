@@ -1,62 +1,41 @@
 //* importing modules
 import {
-  connectDB,
-  corsOption,
-  requestLimit,
-  SESSION_OPTIONS,
-  PRODUCTION,
-  PORT,
+	Express,
+	Request,
+	Response,
+	express,
+	cors,
+	helmet,
+	cookieParser,
+	session,
+	bodyParser,
+	morgan,
+	swaggerUi,
+	path,
+	colors,
+} from '@modules'
+
+import {
+	connectDB,
+	corsOption,
+	requestLimit,
+	SESSION_OPTIONS,
+	PRODUCTION,
+	PORT,
 } from '@config'
 
-import {
-  errorHandler
-} from '@middlewares/index'
+import errorHandler from '@middlewares/errorMiddleware'
 
 import {
-  userRoutes,
-  authRoutes,
-  skillRoutes,
+	userRoutes,
+	authRoutes,
+	skillRoutes,
 } from '@routes/index'
 
-import {
-  requestLogger,
-} from '@helpers/index'
+import { requestLogger } from '@helpers/logger'
 
-import {
-  Express,
-  Request,
-  Response,
-  express,
-  cors,
-  helmet,
-  cookieParser,
-  session,
-  bodyParser,
-  morgan,
-  swaggerUi,
-  path,
-  colors,
-} from '@modules'
-const swaggerDocument = require('./api-docs/openapi.json')
-
-//* importing custom modules
-// import { requestLimit } from './config/rateLimit'
-// import errorHandler from './middlewares/errorMiddleware'
-// import { requestLogger } from './helpers/logger'
-
-// import {
-//   PORT,
-//   PRODUCTION,
-//   connectDB,
-//   corsOption,
-//   SESSION_OPTIONS
-// } from './config'
-
-//* importing routes
-// import userRoutes from './routes/userRoutes'
-// import authRoutes from './routes/authRoutes'
-// import skillRoutes from './routes/skillRoutes'
-
+// const swaggerDocument = require('./api-docs/openapi.json')
+import swaggerDocument from './api-docs/openapi.json'
 
 //* declaration
 const app: Express = express()
@@ -101,17 +80,17 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use(express.static(__dirname + '/storage'))
 
 if (PRODUCTION) {
-  app.use(express.static(path.join(__dirname, '../frontend[react]/dist')))
-  app.get('*', (req: Request, res: Response) => res.sendFile(path.resolve(__dirname, '../', 'frontend[react]', 'dist', 'index.html')))
+	app.use(express.static(path.join(__dirname, '../frontend[react]/dist')))
+	app.get('*', (req: Request, res: Response) => res.sendFile(path.resolve(__dirname, '../', 'frontend[react]', 'dist', 'index.html')))
 } else {
-  app.get('/', (req: Request, res: Response) => res.sendFile(__dirname + '/public/index.html'))
+	app.get('/', (req: Request, res: Response) => res.sendFile(__dirname + '/public/index.html'))
 }
 
 //* 404 not found api endpoint
 app.use('/', (req: Request, res: Response) => {
-  res.status(404).json({
-    message: `endpoint ${req.originalUrl} doest not exists!`,
-  })
+	res.status(404).json({
+		message: `endpoint ${req.originalUrl} doest not exists!`,
+	})
 })
 
 //* error middlewares

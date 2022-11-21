@@ -3,18 +3,18 @@ import express from 'express'
 
 //importing middlewares
 import {
-  refreshAuth,
-  accessAuth,
+	refreshAuth,
+	accessAuth,
 } from '../middlewares/auth'
 
 //importing controllers
 import {
-  registerController,
-  loginController,
-  logoutController,
-  refreshTokenController,
-  tokenController,
-  apiKeyGeneratorController
+	registerController,
+	loginController,
+	logoutController,
+	refreshTokenController,
+	tokenController,
+	apiKeyGeneratorController
 } from '../controllers/auth'
 
 const authRoutes = express.Router()

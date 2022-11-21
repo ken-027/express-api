@@ -1,35 +1,35 @@
 import { mongoose } from '@modules'
-import { APP_KEY, APP_NAME } from "@config"
-import { IWork } from "@types"
-import { collectionName as userName } from "./userModel"
-import { collectionName as skillName } from "./skillModel"
+import { APP_KEY, APP_NAME } from '@config'
+import { IWork } from '@types'
+import { collectionName as userName } from './userModel'
+import { collectionName as skillName } from './skillModel'
 
 const workSchema: IWork = {
-  name: {
-    type: String,
-    required: [true, 'please add a name'],
-  },
-  description: {
-    type: String,
-    required: [true, 'please add a description'],
-  },
-  techUsed: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: skillName
-  }],
-  images: [{
-    type: String
-  }],
-  link: {
-    type: String,
-  },
-  repository: {
-    type: String,
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: userName,
-  },
+	name: {
+		type: String,
+		required: [true, 'please add a name'],
+	},
+	description: {
+		type: String,
+		required: [true, 'please add a description'],
+	},
+	techUsed: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: skillName
+	}],
+	images: [{
+		type: String
+	}],
+	link: {
+		type: String,
+	},
+	repository: {
+		type: String,
+	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: userName,
+	},
 }
 
 

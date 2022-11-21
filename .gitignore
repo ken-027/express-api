@@ -2,4 +2,3 @@ node_modules
 .env
 app.key
 server[express]
-server[typescript]/storage/

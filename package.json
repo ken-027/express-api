@@ -4,10 +4,11 @@
   "description": "",
   "main": "./server[express]/app.js",
   "scripts": {
-    "start": "node server[express]/app.js",
+    "start": "ts-node server[express]/app.js",
     "dev": "nodemon ./server[typescript]/app.ts --exec \"ts-node-dev -r tsconfig-paths/register --clear --respawn --transpile-only --exit-child server[typescript]/app.ts --watch\"",
-    "generate-key": "ts-node-dev --transpile-only server[typescript]/generateKey.ts",
-    "build-server": "tsc"
+    "generate-env": "ts-node -r tsconfig-paths/register --transpile-only server[typescript]/generateEnv.ts",
+    "build-server": "tsc -r tsconfig-paths/register",
+    "eslint": "eslint . --fix --ext .ts"
   },
   "keywords": [],
   "author": "",
@@ -48,8 +49,11 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
     "concurrently": "^7.4.0",
-    "eslint": "^8.25.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
     "nodemon": "^2.0.20",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",

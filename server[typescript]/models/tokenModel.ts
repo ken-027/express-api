@@ -1,25 +1,25 @@
-import { collectionName as userName } from "./userModel"
+import { collectionName as userName } from './userModel'
 import { mongoose } from '@modules'
-import { APP_KEY, APP_NAME } from "@config"
-import { ITokenModel } from "@types"
+import { APP_KEY, APP_NAME } from '@config'
+import { ITokenModel } from '@types'
 
 const tokenSchema: ITokenModel = {
-  user: {
-    unique: true,
-    type: mongoose.Schema.Types.ObjectId,
-    ref: userName,
-  },
-  refreshToken: {
-    type: String,
-    required: [true, 'please add a refreshToken']
-  },
-  accessToken: {
-    type: String,
-  },
-  apiKey: {
-    type: String,
-    required: [true, 'please add a apiKey']
-  }
+	user: {
+		unique: true,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: userName,
+	},
+	refreshToken: {
+		type: String,
+		required: [true, 'please add a refreshToken']
+	},
+	accessToken: {
+		type: String,
+	},
+	apiKey: {
+		type: String,
+		required: [true, 'please add a apiKey']
+	}
 }
 
 

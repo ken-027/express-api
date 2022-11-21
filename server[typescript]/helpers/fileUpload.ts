@@ -16,36 +16,36 @@ import { IFileUpload, IReturnUpload } from '@types'
 // }
 
 const fileUploadv2 = ({
-  file,
-  location = '',
-  ext = null,
-  name,
-  type = 'images',
+	file,
+	location = '',
+	ext = null,
+	name,
+	type = 'images',
 }: IFileUpload): IReturnUpload => {
-  const parentPath = `server[${PRODUCTION ? 'express' : 'typescript'}]/storage/`
+	const parentPath = `server[${PRODUCTION ? 'express' : 'typescript'}]/storage/`
 
-  const encryptImg = hashFile(file?.filename)
-  const extName = path.extname(file?.originalname)
-  const fileName = `${encryptImg}${ext ?? extName}`
-  const directory = `${parentPath}${location}/${type}/${name?.toLowerCase().replace(/\s/g, '')}`
+	const encryptImg = hashFile(file?.filename)
+	const extName = path.extname(file?.originalname)
+	const fileName = `${encryptImg}${ext ?? extName}`
+	const directory = `${parentPath}${location}/${type}/${name?.toLowerCase().replace(/\s/g, '')}`
 
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory, {
-      recursive: true
-    })
-  }
+	if (!fs.existsSync(directory)) {
+		fs.mkdirSync(directory, {
+			recursive: true
+		})
+	}
 
-  const imagePath = `${directory}/${fileName}`
+	const imagePath = `${directory}/${fileName}`
 
-  console.log(imagePath)
-  return {
-    filePath: imagePath,
-    saveFile: () => fs.rename(file.path, imagePath, (err) => {
-      if (err) {
-        throw new Error(err?.message)
-      }
-    })
-  }
+	console.log(imagePath)
+	return {
+		filePath: imagePath,
+		saveFile: () => fs.rename(file.path, imagePath, (err) => {
+			if (err) {
+				throw new Error(err?.message)
+			}
+		})
+	}
 }
 
 export default fileUploadv2
