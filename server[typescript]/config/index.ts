@@ -17,6 +17,8 @@ export const RAPIDAPI_EMAIL_URL: string = process.env?.RAPIDAPI_EMAIL_URL || ''
 export const RAPIDAPI_EMAIL_HOST: string = process.env?.RAPIDAPI_EMAIL_HOST || ''
 export const RAPIDAPI_EMAIL_KEY: string = process.env?.RAPIDAPI_EMAIL_KEY || ''
 
+export const BASE_PATH = `server[${PRODUCTION ? 'express' : 'typescript'}]`
+
 export const APP_EMAIL: string = process.env?.APP_EMAIL || `${APP_NAME}@test.com`
 
 export { default as SESSION_OPTIONS } from './sessionOptions'

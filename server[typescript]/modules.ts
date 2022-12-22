@@ -26,6 +26,7 @@ import moment from 'moment'
 import mongoose from 'mongoose'
 import swaggerUi from 'swagger-ui-express'
 import { createStream } from 'rotating-file-stream'
+import multer from 'multer'
 
 export {
 	Request,
@@ -56,6 +57,5 @@ export {
 	mongoose,
 	dotenv,
 	limiter,
+	multer,
 }
-
-

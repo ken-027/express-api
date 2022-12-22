@@ -1,12 +1,10 @@
 import { Request, Response, asyncHandler } from '@modules'
 import { UserInfo } from '@models'
 import { isImage, userInfoSchema, validateOptions, fileUpload } from '@helpers'
+import { TFile } from '@types'
 
 const addUserInfoController = asyncHandler(
-	async (
-		req: Request & { user?: object; file?: { icon?: object } },
-		res: Response,
-	) => {
+	async (req: Request & { user?: unknown; files?: unknown }, res: Response) => {
 		const { error, value } = userInfoSchema.validate(req.body, validateOptions)
 
 		if (error) {
@@ -16,35 +14,53 @@ const addUserInfoController = asyncHandler(
 			return
 		}
 
-		const { intros, firstName, lastName } = value
-		const icon = req.file?.icon as object
-		const image = isImage(icon)
+		const { intros } = value
+		const { logo, profileImage } = req.files as unknown as {
+			logo: TFile[]
+			profileImage: TFile[]
+		}
+		const isLogo = isImage(logo[0])
+		const isProfileImage = isImage(profileImage[0])
 
-		if (!icon || !image) {
+		if (!logo || !isLogo) {
 			res.status(400).json({
-				errors: [!image ? 'icon must be jpg or png' : 'icon is required'],
+				errors: [!isLogo ? 'logo must be jpg or png' : 'logo is required'],
+			})
+			return
+		}
+
+		if (!profileImage || !isProfileImage) {
+			res.status(400).json({
+				errors: [
+					!isProfileImage
+						? 'profileImage must be jpg or png'
+						: 'profileImage is required',
+				],
 			})
 			return
 		}
 
 		const { id } = req?.user as { id: string }
-		const uploadFile = fileUpload({
-			file: icon,
+		const uploadLogo = fileUpload({
+			file: logo[0],
+			name: `${id}/userinfo`,
+		})
+		const uploadProfile = fileUpload({
+			file: profileImage[0],
 			name: `${id}/userinfo`,
 		})
 
-		console.log(id)
 		const userinfo = await UserInfo.findOneAndUpdate(
 			{ user: id },
 			{
-				intro: intros,
-				firstName: firstName,
-				lastName: lastName,
+				intros: intros,
+				logo: uploadLogo.filePath,
+				profileImage: uploadProfile.filePath,
 			},
-		).select('id intro aboutMe socials')
+		).select('id firstName lastName intros aboutMe logo profileImage socials')
 
-		console.log(userinfo)
-		uploadFile.saveFile()
+		uploadLogo.saveFile()
+		uploadProfile.saveFile()
 		if (userinfo) {
 			res.status(201).json(userinfo)
 		} else {

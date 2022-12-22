@@ -1,11 +1,9 @@
 //modules or packages
-import express from 'express'
+// import express from 'express'
+import { express } from '@modules'
 
 //importing middlewares
-import {
-	refreshAuth,
-	accessAuth,
-} from '../middlewares/auth'
+import { refreshAuth, accessAuth } from '@middlewares/auth'
 
 //importing controllers
 import {
@@ -14,8 +12,8 @@ import {
 	logoutController,
 	refreshTokenController,
 	tokenController,
-	apiKeyGeneratorController
-} from '../controllers/auth'
+	apiKeyGeneratorController,
+} from '@controllers/auth'
 
 const authRoutes = express.Router()
 
@@ -28,5 +26,3 @@ authRoutes.route('/refresh-token').get(refreshAuth, refreshTokenController)
 authRoutes.route('/generate-key').get(accessAuth, apiKeyGeneratorController)
 
 export default authRoutes
-
-

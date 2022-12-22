@@ -14,7 +14,7 @@ const authRefresh = asyncHandler(
 
 		if (!(authorization && authorization.startsWith('Bearer'))) {
 			res.status(400)
-			throw new Error('Header authorization bearer refresh token is required')
+			throw new Error('Header authorization refresh bearer token is required')
 		}
 
 		const token = authorization.split(' ')[1]

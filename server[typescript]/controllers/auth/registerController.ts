@@ -21,12 +21,7 @@ const registerController = asyncHandler(async (req: Request, res: Response) => {
 	const { lastName, firstName, email, password, username } = value
 
 	const userExist = await User.findOne({
-		$or: [
-			{ username: username },
-			{
-				email: email,
-			},
-		],
+		$or: [{ username: username }, { email: email }],
 	})
 
 	if (userExist) {

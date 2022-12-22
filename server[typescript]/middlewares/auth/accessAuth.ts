@@ -14,7 +14,7 @@ const accessAuth = asyncHandler(
 
 		if (!(authorization && authorization.startsWith('Bearer'))) {
 			res.status(400)
-			throw new Error('Header authorization bearer access token is required')
+			throw new Error('Header authorization access bearer token is required')
 		}
 
 		const token = authorization.split(' ')[1]
